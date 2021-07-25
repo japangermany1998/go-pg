@@ -36,11 +36,11 @@ Giả sử ta có 2 bảng User với Profile, với mỗi User chỉ có một 
 type User struct{
 	tableName struct{} `pg:"auth.users"`
     
-    Id int `pg:"serial"`
+    	Id int `pg:"serial"`
 
 	Name string
 
-    Profile *Profile `pg:"rel:belongs-to"`  //Profile thuộc về User
+    	Profile *Profile `pg:"rel:belongs-to"`  //Profile thuộc về User
 }
 ```
 
@@ -50,9 +50,9 @@ type Profile struct{
 
 	Id     int	`pg:"type:serial"`
 
-    Avatar string
+    	Avatar string
 
-    UserId int  `pg:",unique"` //Id của User mà Profile thuộc về, đây là trường cần thiết để go-pg hiểu được quan hệ
+    	UserId int  `pg:",unique"` //Id của User mà Profile thuộc về, đây là trường cần thiết để go-pg hiểu được quan hệ
 }
 ```
 Lưu ý: - Việc đặt unique ở UserId trong Profile không bắt buộc, chỉ nhằm để không có UserId nào giống nhau, như vậy sẽ đảm bảo quan hệ thực sự là 1 - 1 hơn. Nếu không có unique ta có thể có 2 Profile với cùng một UserId, như vậy sẽ mất đi bản chất quan hệ 1 - 1.
@@ -65,7 +65,7 @@ type User struct{
 
 	Name string
 
-    Posts []Post `pg:"rel:has-many"` //Với mỗi user có thể lấy ra nhiều bài post của chính user đó
+    	Posts []Post `pg:"rel:has-many"` //Với mỗi user có thể lấy ra nhiều bài post của chính user đó
 }
 ```
 
@@ -110,6 +110,7 @@ type Role struct{
 ```
 ```go
 type UserRole struct{   //Bảng thứ 3 tên auth.user_role thể hiện quan hệ giữa 2 bảng trên
+
 	tableName struct{} `pg:"auth.user_role"`
 
 	UserId int  // Id của User
