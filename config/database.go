@@ -14,6 +14,9 @@ func ConnectDatabase() (db *pg.DB) {
 		Password: "123456",
 		Database: "postgres",
 	})
+	
+	orm.RegisterTable((*model.UserRole)(nil))
+
 	err := createSchema(db)
 	if err != nil {
 		panic(err)
@@ -26,8 +29,11 @@ func createSchema(db *pg.DB) error {
 		(*model.User)(nil),
 		(*model.Post)(nil),
 		(*model.Comment)(nil),
+		(*model.Profile)(nil),
+		(*model.Role)(nil),
+		(*model.UserRole)(nil),
 	}
-
+	
 	for _, model := range models {
 		err := db.Model(model).CreateTable(&orm.CreateTableOptions{
 			Temp:        false,

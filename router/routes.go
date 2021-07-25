@@ -35,4 +35,8 @@ func AllRoutes(app *iris.Application){
 	app.Put("/api/comment/{id}",controller.UpdateComment)
 
 	app.Delete("/api/comment/{id}",controller.DeleteComment)
+
+	app.Post("/api/role/create",controller.CreateRole)
+	app.Post("/api/user/{userId}/role",controller.SetUserRole)
+	app.Post("/api/profile/user/{userId}",controller.CreateProfile)
 }
