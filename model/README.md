@@ -12,7 +12,7 @@ type User struct{
 
 	FirstName string    //String sẽ tương ứng với kiểu text trong database, tên cột là first_name
 
-	LastName string     //Tương tự với tên là last_name
+	LastName string     //tên cột là last_name
 
 	Email string	`pg:",unique"`  //Email điều kiện là không được trùng lặp
 
