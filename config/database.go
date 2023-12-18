@@ -1,20 +1,20 @@
 package config
 
 import (
-	"go-pg/model"
-
 	"github.com/go-pg/pg/v10"
 	"github.com/go-pg/pg/v10/orm"
+	"go-pg/model"
+	"os"
 )
 
 func ConnectDatabase() (db *pg.DB) {
 	db = pg.Connect(&pg.Options{
-		Addr:     ":5432",
-		User:     "postgres",
-		Password: "123456",
-		Database: "postgres",
+		Addr:     os.Getenv("PG_ADDR"),
+		User:     os.Getenv("PG_USER"),
+		Password: os.Getenv("PG_PASS"),
+		Database: os.Getenv("PG_DATABASE"),
 	})
-	
+
 	orm.RegisterTable((*model.UserRole)(nil))
 
 	err := createSchema(db)
@@ -33,7 +33,7 @@ func createSchema(db *pg.DB) error {
 		(*model.Role)(nil),
 		(*model.UserRole)(nil),
 	}
-	
+
 	for _, model := range models {
 		err := db.Model(model).CreateTable(&orm.CreateTableOptions{
 			Temp:        false,
