@@ -9,7 +9,6 @@ import (
 
 func ConnectDatabase() (db *pg.DB) {
 	db = pg.Connect(&pg.Options{
-		Network:  os.Getenv("PG_NETWORK"),
 		Addr:     os.Getenv("PG_ADDR"),
 		User:     os.Getenv("PG_USER"),
 		Password: os.Getenv("PG_PASS"),
