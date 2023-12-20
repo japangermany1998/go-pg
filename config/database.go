@@ -9,7 +9,7 @@ import (
 
 func ConnectDatabase() (db *pg.DB) {
 	db = pg.Connect(&pg.Options{
-		Addr:     os.Getenv("PG_ADDR"),
+		Addr:     os.Getenv("POSTGRES_SERVICE_HOST") + ":" + os.Getenv("POSTGRES_SERVICE_PORT"),
 		User:     os.Getenv("PG_USER"),
 		Password: os.Getenv("PG_PASS"),
 		Database: os.Getenv("PG_DATABASE"),
