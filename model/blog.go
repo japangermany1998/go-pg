@@ -3,7 +3,7 @@ package model
 import "time"
 
 type Post struct{
-	tableName struct{} `pg:"blog.post"`
+	tableName struct{} `pg:"public.post"`
 
 	Id int `pg:"type:serial" `
 

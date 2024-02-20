@@ -1,7 +1,7 @@
 package model
 
 type User struct{
-	tableName struct{} `pg:"auth.users"`	
+	tableName struct{} `pg:"public.users"`	
 	Id int `pg:"type:serial"`
 	FirstName string
 	LastName string
