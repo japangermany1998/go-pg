@@ -1,7 +1,7 @@
 package model
 
 type User struct{
-	tableName struct{} `pg:"public.users"`	
+	tableName struct{} `pg:"users"`	
 	Id int `pg:"type:serial"`
 	FirstName string
 	LastName string
@@ -13,7 +13,7 @@ type User struct{
 }
 
 type Profile struct{
-	tableName struct{} `pg:"auth.profile"`	
+	tableName struct{} `pg:"profile"`	
 	Id     int	`pg:"type:serial"`
     Avatar string
 	Description string
@@ -21,13 +21,13 @@ type Profile struct{
 }
 
 type Role struct{
-	tableName struct{} `pg:"auth.role"`	
+	tableName struct{} `pg:"role"`	
 	Id int	`pg:"type:serial"`
 	Name string
 }
 
 type UserRole struct{
-	tableName struct{} `pg:"auth.user_role"`	
+	tableName struct{} `pg:"user_role"`	
 	UserId int
 	RoleId int
 }
