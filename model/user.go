@@ -9,7 +9,7 @@ type User struct{
 	Password string
 	Posts []Post `pg:"rel:has-many"`
 	Profile *Profile `pg:"rel:belongs-to"`
-	Roles []Role `pg:"many2many:auth.user_role"`
+	Roles []Role `pg:"many2many:user_role"`
 }
 
 type Profile struct{
