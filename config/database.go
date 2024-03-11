@@ -14,12 +14,12 @@ func ConnectDatabase() (db *pg.DB) {
 		Password: os.Getenv("PG_PASS"),
 		Database: os.Getenv("PG_DATABASE"),
 	})
-
+	orm.RegisterTable((*model.UserRole)(nil))
+	
 	err := createSchema(db)
 	if err != nil {
 		panic(err)
 	}
-	orm.RegisterTable((*model.UserRole)(nil))
 
 	return db
 }
